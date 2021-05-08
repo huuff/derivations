@@ -20,8 +20,13 @@ in {
 
       Service = {
         Type = "forking";
+        Restart = "on-failure";
         ExecStartPre = "${pkg}/bin/autocutsel -fork";
         ExecStart = "${pkg}/bin/autocutsel -fork -selection PRIMARY";
+      };
+
+      Install = {
+        WantedBy = [ "default.target" ];
       };
     };
   };
