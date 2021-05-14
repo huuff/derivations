@@ -4,6 +4,7 @@ with lib;
 
 let
   cfg = config.haf.st; 
+  st = pkgs.callPackage ./st.nix {};
 in {
 
   options.haf.st = {
@@ -14,12 +15,21 @@ in {
       default = [ ];
       description = "List of patches to apply";
     };
+
+    fontSize = mkOption {
+      type = with types; int;
+      default = 10;
+      description = "Default font size to use";
+    };
   };
 
   config = mkIf cfg.enable {
 
-    home.packages = with pkgs; [
-      (st.override { patches = cfg.patches; })
+    home.packages = [
+      (st.override {
+        patches = cfg.patches; 
+        fontSize = cfg.fontSize;
+      })
     ];
   };
 }
