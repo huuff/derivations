@@ -1,8 +1,10 @@
 { lib, stdenv, fetchurl, makeWrapper, pkg-config, libX11, ncurses
-, libXft, patches ? [], extraLibs ? [], fontSize ? 10}:
+, libXft, applyPatches ? [], extraLibs ? [], fontSize ? 10}:
 
 with lib;
-
+let
+  stPatches = import ./st-patches.nix;
+in
 stdenv.mkDerivation rec {
   pname = "st";
   version = "0.8.4";
@@ -12,7 +14,7 @@ stdenv.mkDerivation rec {
     sha256 = "19j66fhckihbg30ypngvqc9bcva47mp379ch5vinasjdxgn3qbfl";
   };
 
-  inherit patches;
+  patches = [ stPatches.defaultFontSize ] ++ applyPatches;
 
   nativeBuildInputs = [ pkg-config ncurses ];
   buildInputs = [ libX11 libXft makeWrapper ] ++ extraLibs;

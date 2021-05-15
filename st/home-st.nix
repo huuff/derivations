@@ -4,7 +4,8 @@ with lib;
 
 let
   cfg = config.haf.st; 
-  st = pkgs.callPackage ./st.nix {};
+  st = pkgs.callPackage ./st.nix { };
+  stPatches = import ./st-patches.nix;
 in {
 
   options.haf.st = {
@@ -21,14 +22,29 @@ in {
       default = 10;
       description = "Default font size to use";
     };
+
+    blinkingCursor = mkEnableOption "blinking cursor";
+
+    colorscheme = mkOption {
+      type = with types; nullOr (enum ["dracula" "gruvbox-dark" "gruvbox-light" "gruvbox-material" ]);
+      default = null;
+      description = "Colorscheme to apply";
+    };
   };
 
-  config = mkIf cfg.enable {
-
+  config = let
+    colorschemePatch = if (cfg.colorscheme != null)
+    then stPatches."${cfg.colorscheme}"
+    else null;
+  in
+  mkIf cfg.enable {
     home.packages = [
       (st.override {
-        patches = cfg.patches; 
         fontSize = cfg.fontSize;
+        applyPatches = cfg.patches
+        ++ optional (colorschemePatch != null) colorschemePatch
+        ++ optional cfg.blinkingCursor stPatches.blinkingCursor
+        ;
       })
     ];
   };
