@@ -1,5 +1,5 @@
 { lib, stdenv, fetchurl, makeWrapper, pkg-config, libX11, ncurses
-, libXft, applyPatches ? [], extraLibs ? [], fontSize ? 10}:
+, libXft, applyPatches ? [], extraLibs ? [], flags ? {}}:
 
 with lib;
 let
@@ -21,8 +21,11 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     TERMINFO=$out/share/terminfo make install PREFIX=$out
+    ${optionalString (flags != {}) ''
     wrapProgram $out/bin/st \
-      --add-flags "-z ${toString fontSize}"
+      --add-flags "-z ${toString flags.z}"
+
+      ''}
   '';
 
   meta = {

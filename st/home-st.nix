@@ -18,7 +18,7 @@ in {
     };
 
     fontSize = mkOption {
-      type = with types; int;
+      type = with types; nullOr int;
       default = 10;
       description = "Default font size to use";
     };
@@ -34,17 +34,21 @@ in {
 
   config = let
     colorschemePatch = if (cfg.colorscheme != null)
-    then stPatches."${cfg.colorscheme}"
+    then stPatches.colorscheme."${cfg.colorscheme}"
     else null;
+    flags = {} 
+    // optionalAttrs (cfg.fontSize != null) { z = cfg.fontSize;}
+    ;
   in
   mkIf cfg.enable {
     home.packages = [
       (st.override {
-        fontSize = cfg.fontSize;
+        #fontSize = cfg.fontSize;
         applyPatches = cfg.patches
         ++ optional (colorschemePatch != null) colorschemePatch
         ++ optional cfg.blinkingCursor stPatches.blinkingCursor
         ;
+        inherit flags;
       })
     ];
   };

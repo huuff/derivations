@@ -1,22 +1,24 @@
 {
-  dracula = builtins.fetchurl {
-    url = "https://st.suckless.org/patches/dracula/st-dracula-0.8.2.diff";
-    sha256 = "0zpvhjg8bzagwn19ggcdwirhwc17j23y5avcn71p74ysbwvy1f2y";
-  };
+  colorscheme = {
+    dracula = builtins.fetchurl {
+      url = "https://st.suckless.org/patches/dracula/st-dracula-0.8.2.diff";
+      sha256 = "0zpvhjg8bzagwn19ggcdwirhwc17j23y5avcn71p74ysbwvy1f2y";
+    };
 
-  gruvbox-dark = builtins.fetchurl {
-    url = "https://st.suckless.org/patches/gruvbox/st-gruvbox-dark-0.8.2.diff";
-    sha256 = "0bhvw1jam9s0km5hwbnicb27sgwzj04msmwc8gvpf2islpnxbcsf";
-  };
+    gruvbox-dark = builtins.fetchurl {
+      url = "https://st.suckless.org/patches/gruvbox/st-gruvbox-dark-0.8.2.diff";
+      sha256 = "0bhvw1jam9s0km5hwbnicb27sgwzj04msmwc8gvpf2islpnxbcsf";
+    };
 
-  gruvbox-light = builtins.fetchurl {
-    url = "https://st.suckless.org/patches/gruvbox/st-gruvbox-light-0.8.2.diff";
-    sha256 = "0szjs6cfs09v0mca5bhgisbjpapgmsphk6qczbd3sg6j4faaiw2k";
-  };
+    gruvbox-light = builtins.fetchurl {
+      url = "https://st.suckless.org/patches/gruvbox/st-gruvbox-light-0.8.2.diff";
+      sha256 = "0szjs6cfs09v0mca5bhgisbjpapgmsphk6qczbd3sg6j4faaiw2k";
+    };
 
-  gruvbox-material = builtins.fetchurl {
-    url = "https://st.suckless.org/patches/gruvbox-material/st-gruvbox-material-0.8.2.diff";
-    sha256 = "13wjrjkzzsmxw2lfb1cirkrk2dyg6zawflvwb11l62zlsg05x3r9";
+    gruvbox-material = builtins.fetchurl {
+      url = "https://st.suckless.org/patches/gruvbox-material/st-gruvbox-material-0.8.2.diff";
+      sha256 = "13wjrjkzzsmxw2lfb1cirkrk2dyg6zawflvwb11l62zlsg05x3r9";
+    };
   };
 
   blinkingCursor = builtins.fetchurl {
