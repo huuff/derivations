@@ -23,13 +23,15 @@ in {
       description = "Default font size to use";
     };
 
-    blinkingCursor = mkEnableOption "blinking cursor";
+    blinkingCursor = mkEnableOption "Blinking cursor";
 
     colorscheme = mkOption {
       type = with types; nullOr (enum ["dracula" "gruvbox-dark" "gruvbox-light" "gruvbox-material" ]);
       default = null;
       description = "Colorscheme to apply";
     };
+
+    scrollback = mkEnableOption "Scrollbar (with mouse wheel)";
   };
 
   config = let
@@ -44,6 +46,7 @@ in {
     home.packages = [
       (st.override {
         applyPatches = cfg.patches
+        ++ flatten (optional cfg.scrollback [ stPatches.scrollback.main stPatches.scrollback.mouse stPatches.scrollback.mouse-altscreen ])
         ++ optional (colorschemePatch != null) colorschemePatch
         ++ optional cfg.blinkingCursor stPatches.blinkingCursor
         ++ optional (cfg.fontSize != null) stPatches.defaultFontSize

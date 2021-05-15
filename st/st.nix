@@ -11,7 +11,6 @@ stdenv.mkDerivation rec {
     sha256 = "19j66fhckihbg30ypngvqc9bcva47mp379ch5vinasjdxgn3qbfl";
   };
 
-  #patches = [ stPatches.defaultFontSize ] ++ applyPatches;
   patches = applyPatches;
 
   nativeBuildInputs = [ pkg-config ncurses ];
@@ -19,7 +18,7 @@ stdenv.mkDerivation rec {
 
   installPhase = let
     flagArg = mapAttrsToList (name: value: "--add-flags \"-${name} ${toString value}\"") flags;
-    argsString = lib.concatStringsSep "\\ \n" flagArg;
+    argsString = concatStringsSep "\\ \n" flagArg;
   in
   ''
     TERMINFO=$out/share/terminfo make install PREFIX=$out
