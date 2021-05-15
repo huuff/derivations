@@ -1,10 +1,7 @@
 { lib, stdenv, fetchurl, makeWrapper, pkg-config, libX11, ncurses
-, libXft, applyPatches ? [], extraLibs ? [], flags ? {}}:
+, libXft, applyPatches, extraLibs ? [], flags ? {}}:
 
 with lib;
-let
-  stPatches = import ./st-patches.nix;
-in
 stdenv.mkDerivation rec {
   pname = "st";
   version = "0.8.4";
@@ -14,17 +11,21 @@ stdenv.mkDerivation rec {
     sha256 = "19j66fhckihbg30ypngvqc9bcva47mp379ch5vinasjdxgn3qbfl";
   };
 
-  patches = [ stPatches.defaultFontSize ] ++ applyPatches;
+  #patches = [ stPatches.defaultFontSize ] ++ applyPatches;
+  patches = applyPatches;
 
   nativeBuildInputs = [ pkg-config ncurses ];
   buildInputs = [ libX11 libXft makeWrapper ] ++ extraLibs;
 
-  installPhase = ''
+  installPhase = let
+    flagArg = mapAttrsToList (name: value: "--add-flags \"-${name} ${toString value}\"") flags;
+    argsString = lib.concatStringsSep "\\ \n" flagArg;
+  in
+  ''
     TERMINFO=$out/share/terminfo make install PREFIX=$out
     ${optionalString (flags != {}) ''
     wrapProgram $out/bin/st \
-      --add-flags "-z ${toString flags.z}"
-
+        ${argsString}
       ''}
   '';
 

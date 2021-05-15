@@ -43,10 +43,10 @@ in {
   mkIf cfg.enable {
     home.packages = [
       (st.override {
-        #fontSize = cfg.fontSize;
         applyPatches = cfg.patches
         ++ optional (colorschemePatch != null) colorschemePatch
         ++ optional cfg.blinkingCursor stPatches.blinkingCursor
+        ++ optional (cfg.fontSize != null) stPatches.defaultFontSize
         ;
         inherit flags;
       })
