@@ -3,12 +3,12 @@
 with lib;
 
 let
-  cfg = config.haf.st; 
+  cfg = config.programs.st; 
   st = pkgs.callPackage ./st.nix { };
   stPatches = import ./st-patches.nix;
 in {
 
-  options.haf.st = {
+  options.programs.st = {
     enable = mkEnableOption "Simple Terminal from suckless";
 
     patches = mkOption {
