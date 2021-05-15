@@ -1,2 +1,3 @@
 * blesh gives a weird error about readlink, see if I can solve it
-* how to change the default font in st? I have the font size patch but bash is not getting my aliases with home manager. Maybe makeWrapper?
+* st: solarized requires another patch before applying it, look into it before implementing it.
+* st: having to modify the derivation just to set command line arguments is a bit terrible, is there any other way?
