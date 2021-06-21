@@ -17,8 +17,8 @@ stdenv.mkDerivation rec {
   buildInputs = [ libX11 libXft makeWrapper ] ++ extraLibs;
 
   installPhase = let
-    flagArg = mapAttrsToList (name: value: "--add-flags \"-${name} ${toString value}\"") flags;
-    argsString = concatStringsSep "\\ \n" flagArg;
+    flagArg = mapAttrsToList (name: value: ''--add-flags "-${name} '${toString value}'"'') flags;
+    argsString = concatStringsSep " " flagArg;
   in
   ''
     TERMINFO=$out/share/terminfo make install PREFIX=$out

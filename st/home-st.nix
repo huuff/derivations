@@ -31,6 +31,12 @@ in {
       description = "Colorscheme to apply";
     };
 
+    flags = mkOption {
+      type = with types; attrs;
+      default = {};
+      description = "Flags to run the executable with";
+    };
+
     scrollback = mkEnableOption "Scrollbar (with mouse wheel)";
   };
 
@@ -38,7 +44,7 @@ in {
     colorschemePatch = if (cfg.colorscheme != null)
     then stPatches.colorscheme."${cfg.colorscheme}"
     else null;
-    flags = {} 
+    applyFlags = cfg.flags
     // optionalAttrs (cfg.fontSize != null) { z = cfg.fontSize;}
     ;
   in
@@ -51,7 +57,7 @@ in {
         ++ optional cfg.blinkingCursor stPatches.blinkingCursor
         ++ optional (cfg.fontSize != null) stPatches.defaultFontSize
         ;
-        inherit flags;
+        flags = applyFlags;
       })
     ];
   };
