@@ -51,7 +51,7 @@ in {
   mkIf cfg.enable {
     home.packages = [
       (st.override {
-        applyPatches = cfg.patches
+        patches = cfg.patches
         ++ flatten (optional cfg.scrollback [ stPatches.scrollback.main stPatches.scrollback.mouse stPatches.scrollback.mouse-altscreen ])
         ++ optional (colorschemePatch != null) colorschemePatch
         ++ optional cfg.blinkingCursor stPatches.blinkingCursor
