@@ -1,5 +1,5 @@
 { lib, stdenv, fetchurl, makeWrapper, pkg-config, libX11, ncurses
-, libXft, applyPatches, extraLibs ? [], flags ? {}}:
+, libXft, patches, extraLibs ? [], flags ? {}}:
 
 with lib;
 stdenv.mkDerivation rec {
@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
     sha256 = "19j66fhckihbg30ypngvqc9bcva47mp379ch5vinasjdxgn3qbfl";
   };
 
-  patches = applyPatches;
+  inherit patches;
 
   nativeBuildInputs = [ pkg-config ncurses ];
   buildInputs = [ libX11 libXft makeWrapper ] ++ extraLibs;
