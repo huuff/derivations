@@ -33,11 +33,11 @@
       home-st = pkgs.callPackage ./st/home-st.nix {};
       home-surf = pkgs.callPackage ./surf/home-surf {};
       autocutsel = pkgs.callPackage ./autocutsel.nix {};
+      scripts = pkgs.callPackage ./scripts.nix {};
 
       # NixOS modules
       do-on-request = pkgs.callPackage ./do-on-request.nix {};
-      scripts = pkgs.callPackage ./scripts.nix {};
-      auto-rsync = pkgs.callPackage ./auto-rsync.nix {};
+      auto-rsync = import ./auto-rsync.nix;
     };
   });
 
