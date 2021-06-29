@@ -24,12 +24,17 @@
     };
 
     nixosModules = {
+
+      # Home Manager modules
       home-blesh = pkgs.callPackage ./blesh/home-blesh.nix {}; 
       home-st = pkgs.callPackage ./st/home-st.nix {};
       home-surf = pkgs.callPackage ./surf/home-surf {};
       autocutsel = pkgs.callPackage ./autocutsel.nix {};
+
+      # NixOS modules
       do-on-request = pkgs.callPackage ./do-on-request.nix {};
       scripts = pkgs.callPackage ./scripts.nix {};
+      auto-rsync = pkgs.callPackage ./auto-rsync.nix {};
     };
   });
 
