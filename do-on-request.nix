@@ -43,8 +43,9 @@ in
       systemd.services.do-on-request = {
         description = "Run a script when a request is received on port ${toString cfg.port}";
         
-        preStart = "mkdir ${cfg.workingDirectory} || true"
-        + optionalString (cfg.preScript != null) "; ${cfg.preScript}"
+        preStart = ''
+          mkdir ${cfg.workingDirectory} || true
+        '' + optionalString (cfg.preScript != null) "\n ${cfg.preScript}"
         ;
 
         serviceConfig = {
