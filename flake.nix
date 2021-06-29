@@ -15,7 +15,7 @@
   {
     packages = {
       blesh = pkgs.callPackage ./blesh/blesh.nix {};
-      st = pkgs.callPackage ./st/st.nix { patches = [];};
+      st = pkgs.callPackage ./st/st.nix {};
     };
 
     overlays = {

@@ -1,5 +1,5 @@
 { lib, stdenv, fetchurl, makeWrapper, pkg-config, libX11, ncurses
-, libXft, patches, extraLibs ? [], flags ? {}}:
+, libXft, patches ? [], extraLibs ? [], flags ? {}}:
 
 with lib;
 stdenv.mkDerivation rec {
