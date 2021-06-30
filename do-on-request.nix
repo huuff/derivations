@@ -32,39 +32,39 @@ in
       };
     };
 
-    config = mkIf cfg.enable {
-      assertions = [
-        {
-          assertion = cfg.script != null;
-          message = "services.do-on-request.script must be set!";
-        }
-      ];
+    #config = mkIf cfg.enable {
+      #assertions = [
+        #{
+          #assertion = cfg.script != null;
+          #message = "services.do-on-request.script must be set!";
+        #}
+      #];
 
-      systemd.services.do-on-request = {
-        description = "Run a script when a request is received on port ${toString cfg.port}";
+      #systemd.services.do-on-request = {
+        #description = "Run a script when a request is received on port ${toString cfg.port}";
         
-        preStart = ''
-          mkdir ${cfg.workingDirectory} || true
-        '' + optionalString (cfg.preScript != null) "\n ${cfg.preScript}"
-        ;
+        #preStart = ''
+          #mkdir ${cfg.workingDirectory} || true
+        #'' + optionalString (cfg.preScript != null) "\n ${cfg.preScript}"
+        #;
 
-        serviceConfig = {
-          Restart = "on-failure";
-          WorkingDirectory = "${cfg.workingDirectory}";
-        };
+        #serviceConfig = {
+          #Restart = "on-failure";
+          #WorkingDirectory = "${cfg.workingDirectory}";
+        #};
 
-        script = ''
-          #!${pkgs.stdenv.shell}
-          set -x
-          while true;
-          do {
-          ${cfg.script}
-          } | ${pkgs.busybox}/bin/nc -l -p ${toString cfg.port};
-          done
-          '';
+        #script = ''
+          ##!${pkgs.stdenv.shell}
+          #set -x
+          #while true;
+          #do {
+          #${cfg.script}
+          #} | ${pkgs.busybox}/bin/nc -l -p ${toString cfg.port};
+          #done
+          #'';
 
-          wantedBy = [ "default.target" ];
-      };
-    };
+          #wantedBy = [ "default.target" ];
+      #};
+    #};
 
   }
