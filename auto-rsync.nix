@@ -23,6 +23,18 @@ in
         default = "";
         description = "Script to execute before starting";
       };
+
+      createStartPath = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Whether to create the start path before starting";
+      };
+
+      createEndPath = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Whether to create the end path before starting";
+      };
     };
 
     config = {
@@ -40,10 +52,9 @@ in
       systemd.services.auto-rsync = {
         description = "Automatically rsync ${toString cfg.startPath} to ${toString cfg.endPath}";
 
-        preStart = ''
-          mkdir -p ${cfg.startPath} || true
-          mkdir -p ${cfg.endPath} || true
-        '' + optionalString (cfg.preScript != null) "\n ${cfg.preScript}";
+        preStart = optionalString (cfg.createStartPath) "mkdir -p ${cfg.startPath} || true"
+        + optionalString (cfg.createEndPath) "\n mkdir -p ${cfg.endPath} || true"
+        + optionalString (cfg.preScript != null) "\n ${cfg.preScript}";
 
         serviceConfig = {
           Restart = "on-failure";
