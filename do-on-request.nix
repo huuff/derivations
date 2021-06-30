@@ -19,11 +19,11 @@ in
         #description = "Script to run when a request is received";
       #};
 
-      preScript = mkOption {
-        type = types.str;
-        default = null;
-        description = "Script to run before starting the unit";
-      };
+      #preScript = mkOption {
+        #type = types.str;
+        #default = null;
+        #description = "Script to run before starting the unit";
+      #};
 
       #workingDirectory = mkOption {
         #type = types.path;
