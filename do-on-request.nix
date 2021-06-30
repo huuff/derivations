@@ -7,11 +7,11 @@ in
     options.services.do-on-request = {
       enable = mkEnableOption "Run something when receiving a request on some port";
 
-      port = mkOption {
-        type = types.int;
-        default = 12222;
-        description = "Port on which to listen";
-      };
+      #port = mkOption {
+        #type = types.int;
+        #default = 12222;
+        #description = "Port on which to listen";
+      #};
 
       #script = mkOption {
         #type = types.str;
