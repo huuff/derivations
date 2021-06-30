@@ -32,7 +32,7 @@ in
       };
 
       createWorkingDirectory = mkOption {
-        type = type.bool;
+        type = types.bool;
         default = true;
         description = "Whether to create the working directory on first run";
       };
