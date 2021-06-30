@@ -13,11 +13,11 @@ in
         description = "Port on which to listen";
       };
 
-      script = mkOption {
-        type = types.str;
-        default = null;
-        description = "Script to run when a request is received";
-      };
+      #script = mkOption {
+        #type = types.str;
+        #default = null;
+        #description = "Script to run when a request is received";
+      #};
 
       preScript = mkOption {
         type = types.str;
