@@ -26,8 +26,8 @@
       surf-patches = pkgs.callPackage ./surf/surf-patches-overlay.nix {};
     };
 
+    # Maybe callPackage is harmful here
     nixosModules = {
-
       # Home Manager modules
       home-blesh = pkgs.callPackage ./blesh/home-blesh.nix {}; 
       home-st = pkgs.callPackage ./st/home-st.nix {};
@@ -36,7 +36,7 @@
       scripts = pkgs.callPackage ./scripts.nix {};
 
       # NixOS modules
-      do-on-request = pkgs.callPackage ./do-on-request.nix {};
+      do-on-request = import ./do-on-request.nix;
       auto-rsync = import ./auto-rsync.nix;
     };
   });
