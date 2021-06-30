@@ -25,11 +25,11 @@ in
         description = "Script to run before starting the unit";
       };
 
-      workingDirectory = mkOption {
-        type = types.path;
-        default = "/";
-        description = "Path on which to run the script";
-      };
+      #workingDirectory = mkOption {
+        #type = types.path;
+        #default = "/";
+        #description = "Path on which to run the script";
+      #};
     };
 
     #config = mkIf cfg.enable {
