@@ -31,6 +31,12 @@ in {
       description = "Colorscheme to apply";
     };
 
+    exec = mkOption {
+      type = with types; nullOr str;
+      default = null;
+      description = "Program to run after launching";
+    };
+
     flags = mkOption {
       type = with types; attrs;
       default = {};
@@ -44,8 +50,9 @@ in {
     colorschemePatch = if (cfg.colorscheme != null)
     then stPatches.colorscheme."${cfg.colorscheme}"
     else null;
-    applyFlags = optionalAttrs (cfg.fontSize != null) { z = cfg.fontSize;}
-    // cfg.flags 
+    applyFlags = cfg.flags
+    // optionalAttrs (cfg.fontSize != null) { z = cfg.fontSize;}
+    // optionalAttrs (cfg.exec != null) { e = cfg.exec; } 
     ;
   in
   mkIf cfg.enable {
