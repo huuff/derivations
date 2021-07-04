@@ -17,7 +17,10 @@ stdenv.mkDerivation rec {
   buildInputs = [ libX11 libXft makeWrapper ] ++ extraLibs;
 
   installPhase = let
-    flagArg = mapAttrsToList (name: value: ''--add-flags "-${name} '${toString value}'"'') flags;
+    #flagArg = mapAttrsToList (name: value: ''--add-flags "-${name} '${toString value}'"'') flags;
+    flagArgs = map
+    (x: let name = builtins.head (attrNames x); in
+      ''--add-flags "-${name} '${toString x.${name}}'"'') flags;
     argsString = concatStringsSep " " flagArg;
   in
   ''
