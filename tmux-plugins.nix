@@ -1,6 +1,6 @@
     final: prev: with prev.pkgs; {
       tmuxPlugins = {
-      better-mouse-mode = tmuxPlugins.mkTmuxPlugin {
+      better-mouse-mode = prev.pkgs.tmuxPlugins.mkTmuxPlugin {
         pluginName = "better-mouse-mode";
         version = "rev aa59077c635ab21b251bd8cb4dc24c415e64a58e";
         src = fetchFromGitHub {
