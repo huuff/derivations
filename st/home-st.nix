@@ -38,8 +38,8 @@ in {
     };
 
     flags = mkOption {
-      type = with types; attrs;
-      default = {};
+      type = with types; listOf attrs;
+      default = [];
       description = "Flags to run the executable with";
     };
 
@@ -51,8 +51,8 @@ in {
     then stPatches.colorscheme."${cfg.colorscheme}"
     else null;
     applyFlags = cfg.flags
-    // optionalAttrs (cfg.fontSize != null) { z = cfg.fontSize;}
-    // optionalAttrs (cfg.exec != null) { e = cfg.exec; } 
+    ++ optional (cfg.fontSize != null) { z = cfg.fontSize;}
+    ++ optional (cfg.exec != null) { e = cfg.exec; } 
     ;
   in
   mkIf cfg.enable {
