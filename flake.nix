@@ -22,7 +22,7 @@
     };
 
     overlays = {
-      tmux-plugins = import ./tmux-plugins.nix;
+      tmux-plugins = import ./tmux-plugins.nix {tmuxPlugins = pkgs.tmuxPlugins;};
     };
 
     nixosModules = {
