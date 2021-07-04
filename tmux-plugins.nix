@@ -3,7 +3,7 @@
       tmuxPlugins = {
       better-mouse-mode = tmuxPlugins.mkTmuxPlugin {
         pluginName = "better-mouse-mode";
-        version = "rev aa59077c635ab21b251bd8cb4dc24c415e64a58e";
+        version = "rev-aa59077c635ab21b251bd8cb4dc24c415e64a58e";
         src = fetchFromGitHub {
           owner = "NHDaly";
           repo = "tmux-better-mouse-mode";
