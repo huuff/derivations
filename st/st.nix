@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
     flagArgs = map
     (x: let name = builtins.head (attrNames x); in
       ''--add-flags "-${name} '${toString x.${name}}'"'') flags;
-    argsString = concatStringsSep " " flagArg;
+    argsString = concatStringsSep " " flagArgs;
   in
   ''
     TERMINFO=$out/share/terminfo make install PREFIX=$out
