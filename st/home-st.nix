@@ -44,8 +44,8 @@ in {
     colorschemePatch = if (cfg.colorscheme != null)
     then stPatches.colorscheme."${cfg.colorscheme}"
     else null;
-    applyFlags = cfg.flags
-    // optionalAttrs (cfg.fontSize != null) { z = cfg.fontSize;}
+    applyFlags = optionalAttrs (cfg.fontSize != null) { z = cfg.fontSize;}
+    // cfg.flags 
     ;
   in
   mkIf cfg.enable {
