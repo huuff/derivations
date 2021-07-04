@@ -11,35 +11,33 @@
   };
 
   outputs = { self, nixpkgs, utils, flake-compat, ... }:
-  utils.lib.eachDefaultSystem (system:
   let
+    system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system;};
-  in
+  in with pkgs;
   {
-    packages = {
-      blesh = pkgs.callPackage ./blesh/blesh.nix {};
-      st = pkgs.callPackage ./st/st.nix {};
+    packages.${system} = {
+      blesh = callPackage ./blesh/blesh.nix {};
+      st = callPackage ./st/st.nix {};
     };
 
     overlays = {
-      st-patches = pkgs.callPackage ./st/st-patches.nix {};
-      surf-patches = pkgs.callPackage ./surf/surf-patches-overlay.nix {};
+      tmux-plugins = import ./tmux-plugins.nix;
     };
 
-    # Maybe callPackage is harmful here
     nixosModules = {
       # Home Manager modules
-      home-blesh = pkgs.callPackage ./blesh/home-blesh.nix {}; 
-      home-st = pkgs.callPackage ./st/home-st.nix {};
-      home-surf = pkgs.callPackage ./surf/home-surf {};
-      autocutsel = pkgs.callPackage ./autocutsel.nix {};
-      scripts = pkgs.callPackage ./scripts.nix {};
+      home-blesh = import ./blesh/home-blesh.nix; 
+      home-st = import ./st/home-st.nix;
+      home-surf = import ./surf/home-surf.nix;
+      autocutsel = import ./autocutsel.nix;
+      scripts = import ./scripts.nix;
 
       # NixOS modules
       do-on-request = import ./do-on-request.nix;
       auto-rsync = import ./auto-rsync.nix;
       neuron-module = import ./neuron-module.nix;
     };
-  });
+  };
 
 }
