@@ -30,6 +30,12 @@ in
         default = "/";
         description = "Path on which to run the script";
       };
+
+      user = mkOption {
+        type = types.str;
+        default = null;
+        description = "User which will run the service";
+      };
     };
 
     config = mkIf cfg.enable {
@@ -37,6 +43,10 @@ in
         {
           assertion = cfg.script != null;
           message = "services.do-on-request.script must be set!";
+        }
+        {
+          assertion = cfg.user != null;
+          message = "services,do-on-request.user must be set!";
         }
       ];
 
@@ -46,6 +56,7 @@ in
         preStart = optionalString (cfg.preScript != null) "\n ${cfg.preScript}";
 
         serviceConfig = {
+          User = cfg.user;
           Restart = "on-failure";
           WorkingDirectory = "${cfg.workingDirectory}";
         };
