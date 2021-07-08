@@ -20,13 +20,13 @@ in
       };
 
       preScript = mkOption {
-        type = types.str;
+        type = with types; nullOr str;
         default = null;
         description = "Script to run before starting the unit";
       };
 
       workingDirectory = mkOption {
-        type = types.path;
+        type = with types; nullOr str;
         default = "/";
         description = "Path on which to run the script";
       };
