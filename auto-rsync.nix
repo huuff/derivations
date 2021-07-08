@@ -6,6 +6,8 @@ in
   {
     options.services.auto-rsync = {
 
+      enable = mkEnableOption "Enable auto-rsync";
+
       startPath = mkOption {
         type = types.str;
         default = null;
@@ -37,7 +39,7 @@ in
       };
     };
 
-    config = {
+    config = mkIf cfg.enable {
       assertions = [
         {
           assertion = cfg.startPath != null;

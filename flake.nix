@@ -19,6 +19,7 @@
     packages.${system} = {
       blesh = callPackage ./blesh/blesh.nix {};
       st = callPackage ./st/st.nix {};
+      maven = callPackage ./maven363/maven.nix {};
     };
 
     overlays = {
