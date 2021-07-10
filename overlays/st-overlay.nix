@@ -1,7 +1,8 @@
+{ st }:
 final: prev:
 {
 
-  st = import ./../packages/st.nix;
+  inherit st;
   stPatches = {
   colorscheme = {
     dracula = builtins.fetchurl {
