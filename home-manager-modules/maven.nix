@@ -22,7 +22,7 @@ in {
     home.file.".mavenrc".source = 
     let
       optionsList = attrsets.mapAttrsToList (name: value: "-D${name}=${value}") cfg.options;
-      optionsString = lib.concatStringsSetp " " optionsList;
+      optionsString = lib.concatStringsSep " " optionsList;
     in
     pkgs.writeShellScript "mavenrc" ''
       MAVEN_OPTS="${optionsString}"
