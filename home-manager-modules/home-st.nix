@@ -44,7 +44,7 @@ in {
     scrollback = mkEnableOption "Scrollbar (with mouse wheel)";
   };
 
-  config = let
+  config = with pkgs; let
     colorschemePatch = if (cfg.colorscheme != null)
     then stPatches.colorscheme."${cfg.colorscheme}"
     else null;
