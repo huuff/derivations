@@ -34,6 +34,7 @@
       home-surf = import ./surf/home-surf.nix;
       autocutsel = import ./home-manager-modules/autocutsel.nix;
       scripts = import ./home-manager-modules/scripts.nix;
+      maven = import ./home-manager-modules/maven.nix;
 
       # NixOS modules
       do-on-request = import ./nixos-modules/do-on-request.nix;
