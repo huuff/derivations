@@ -23,7 +23,7 @@
 
     overlays = {
       tmux-plugins = import ./overlays/tmux-plugins.nix {tmuxPlugins = pkgs.tmuxPlugins;};
-      st = import ./overlays/st-overlay.nix { st = self.packages.${system}.st; };
+      st = import ./overlays/st-overlay.nix;
       surfPatches = import ./overlays/surf-patches.nix;
     };
 
