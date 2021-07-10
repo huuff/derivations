@@ -14,6 +14,11 @@ in {
       default = {};
       description = "Command line arguments to apply to each Maven invocation";
     };
+
+    settings = mkOption {
+      type = types.str;
+      default = null;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -27,5 +32,7 @@ in {
     pkgs.writeShellScript "mavenrc" ''
       MAVEN_OPTS="${optionsString}"
     '';
+
+    home.file.".m2/settings.xml".source = cfg.settings;
   };
 }
