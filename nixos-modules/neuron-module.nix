@@ -25,6 +25,12 @@ in
         default = 80;
         description  = "Port from which to serve neuron";
       };
+
+      user = mkOption {
+        type = types.str;
+        default = "root";
+        description = "User under which Neuron will be run";
+      };
     };
 
     config = mkIf cfg.enable {
@@ -39,6 +45,7 @@ in
         description = "Neuron instance";
 
         serviceConfig = {
+          User = cfg.user;
           Restart = "on-failure";
           WorkingDirectory = cfg.path;
           ExecStart = if cfg.serve
