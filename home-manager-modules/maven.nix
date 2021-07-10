@@ -17,7 +17,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ maven ];
+    home.packages = [ pkgs.maven ];
 
     home.file.".mavenrc".source = 
     let
