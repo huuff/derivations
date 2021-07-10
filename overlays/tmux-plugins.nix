@@ -11,5 +11,5 @@
           sha256 = "06346ih3hzwszhkj25g4xv5av7292s6sdbrdpx39p0n3kgf5mwww";
         };
       };
-    } // tmuxPlugins ;
+    } // prev.pkgs.tmuxPlugins;
     }
