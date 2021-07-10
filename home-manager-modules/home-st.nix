@@ -44,9 +44,9 @@ in {
     scrollback = mkEnableOption "Scrollbar (with mouse wheel)";
   };
 
-  config = with pkgs; let
+  config = let
     colorschemePatch = if (cfg.colorscheme != null)
-    then stPatches.colorscheme."${cfg.colorscheme}"
+    then pkgs.stPatches.colorscheme."${cfg.colorscheme}"
     else null;
     applyFlags = cfg.flags
     ++ optional (cfg.fontSize != null) { z = cfg.fontSize;}
@@ -55,12 +55,12 @@ in {
   in
   mkIf cfg.enable {
     home.packages = [
-      (st.override {
+      (pkgs.st.override {
         patches = cfg.patches
-        ++ flatten (optional cfg.scrollback [ stPatches.scrollback.main stPatches.scrollback.mouse stPatches.scrollback.mouse-altscreen ])
+        ++ flatten (optional cfg.scrollback [ pkgs.stPatches.scrollback.main pkgs.stPatches.scrollback.mouse pkgs.stPatches.scrollback.mouse-altscreen ])
         ++ optional (colorschemePatch != null) colorschemePatch
-        ++ optional cfg.blinkingCursor stPatches.blinkingCursor
-        ++ optional (cfg.fontSize != null) stPatches.defaultFontSize
+        ++ optional cfg.blinkingCursor pkgs.stPatches.blinkingCursor
+        ++ optional (cfg.fontSize != null) pkgs.stPatches.defaultFontSize
         ;
         flags = applyFlags;
       })
