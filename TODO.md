@@ -6,3 +6,6 @@
 * solarized requires another patch before applying it, look into it before implementing it.
 * implement something to increase the scroll speed (there are some patches)
 * config option for font
+
+## do-on-request
+* Use libressl for nc instead of busybox
