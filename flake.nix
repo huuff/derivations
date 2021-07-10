@@ -24,6 +24,7 @@
     overlays = {
       tmux-plugins = import ./overlays/tmux-plugins.nix {tmuxPlugins = pkgs.tmuxPlugins;};
       st = import ./overlays/st-overlay.nix { st = self.packages.${system}.st; };
+      surfPatches = import ./overlays/surf-patches.nix;
     };
 
     nixosModules = {
@@ -35,9 +36,9 @@
       scripts = import ./home-manager-modules/scripts.nix;
 
       # NixOS modules
-      do-on-request = import ./do-on-request.nix;
-      auto-rsync = import ./auto-rsync.nix;
-      neuron-module = import ./neuron-module.nix;
+      do-on-request = import ./nixos-modules/do-on-request.nix;
+      auto-rsync = import ./nixos-modules/auto-rsync.nix;
+      neuron-module = import ./nixos-modules/neuron-module.nix;
     };
   };
 
