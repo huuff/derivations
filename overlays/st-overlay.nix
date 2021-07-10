@@ -1,4 +1,8 @@
+final: prev:
 {
+
+  st = import ./../packages/st.nix;
+  stPatches = {
   colorscheme = {
     dracula = builtins.fetchurl {
       url = "https://st.suckless.org/patches/dracula/st-dracula-0.8.2.diff";
@@ -47,5 +51,6 @@
       sha256 = "17avl5bgwlh5ayaqfg01sg9klf828hc0fd36cgzldnl595jyp1yb";
     };
   };
+};
 }
 

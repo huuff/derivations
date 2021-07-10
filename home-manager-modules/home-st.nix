@@ -4,8 +4,6 @@ with lib;
 
 let
   cfg = config.programs.st; 
-  st = pkgs.callPackage ./st.nix { };
-  stPatches = import ./st-patches.nix;
 in {
 
   options.programs.st = {

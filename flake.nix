@@ -17,22 +17,22 @@
   in with pkgs;
   {
     packages.${system} = {
-      blesh = callPackage ./blesh/blesh.nix {};
-      st = callPackage ./st/st.nix {};
-      maven = callPackage ./maven363/maven.nix {};
+      blesh = callPackage ./packages/blesh.nix {};
+      st = callPackage ./packages/st.nix {};
     };
 
     overlays = {
-      tmux-plugins = import ./tmux-plugins.nix {tmuxPlugins = pkgs.tmuxPlugins;};
+      tmux-plugins = import ./overlays/tmux-plugins.nix {tmuxPlugins = pkgs.tmuxPlugins;};
+      st = import ./overlays/st-overlay.nix;
     };
 
     nixosModules = {
       # Home Manager modules
-      home-blesh = import ./blesh/home-blesh.nix; 
-      home-st = import ./st/home-st.nix;
+      home-blesh = import ./home-manager-modules/home-blesh.nix; 
+      home-st = import ./home-manager-modules/home-st.nix;
       home-surf = import ./surf/home-surf.nix;
-      autocutsel = import ./autocutsel.nix;
-      scripts = import ./scripts.nix;
+      autocutsel = import ./home-manager-modules/autocutsel.nix;
+      scripts = import ./home-manager-modules/scripts.nix;
 
       # NixOS modules
       do-on-request = import ./do-on-request.nix;
