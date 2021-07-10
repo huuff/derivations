@@ -18,6 +18,7 @@ in {
     settings = mkOption {
       type = types.str;
       default = null;
+      description = "Text to put under .m2/settings.xml";
     };
   };
 
@@ -29,10 +30,10 @@ in {
       optionsList = attrsets.mapAttrsToList (name: value: "-D${name}=${value}") cfg.options;
       optionsString = lib.concatStringsSep " " optionsList;
     in
-    pkgs.writeShellScript "mavenrc" ''
+    pkgs.writeText "mavenrc" ''
       MAVEN_OPTS="${optionsString}"
     '';
 
-    home.file.".m2/settings.xml".source = cfg.settings;
+    home.file.".m2/settings.xml".source = pkgs.writeText "settings.xml" cfg.settings;
   };
 }
