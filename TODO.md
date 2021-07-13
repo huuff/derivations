@@ -9,3 +9,6 @@
 
 ## do-on-request
 * Use libressl for nc instead of busybox
+
+## autocutsel
+* Synchronize only clipboard to primary selection because the other way around feels like hell. Or will it be useless then?
