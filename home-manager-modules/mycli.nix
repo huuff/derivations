@@ -32,7 +32,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = [ pkgs.mycli ];
 
-    home.file.".myclirc".source = pkgs.writeText ''
+    home.file.".myclirc".source = pkgs.writeText "myclirc" ''
   # Check the defaults at from https://github.com/dbcli/mycli/blob/master/mycli/myclirc
   [main]
   smart_completion = True
