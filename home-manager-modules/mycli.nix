@@ -4,7 +4,7 @@ let
   cfg = config.programs.mycli;
 in {
   options.programs.mycli = {
-    enable = mkEnableOption;
+    enable = mkEnableOption "Command line MySQL interface";
 
     favoriteQueries = mkOption {
       type = types.attrs;
