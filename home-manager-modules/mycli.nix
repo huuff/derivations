@@ -7,19 +7,24 @@ in {
     enable = mkEnableOption;
 
     favoriteQueries = mkOption {
-      type = with types; listOf str;
-      default = [];
+      type = types.attrs;
+      default = {};
       description = "Your favorite queries";
+      example = literalExample ''
+          {
+            all = "select * from $1";
+          };
+        '';
     };
 
     aliasDSNs = mkOption {
-      type = with types; listOf str;
-      default = [];
+      type = types.attrs;
+      default = {};
       description = "Aliases of DSNs";
-      example = ''
-          [
-            example_dsn = mysql://[user[:password]@][host][:port][/dbname]
-          ]
+      example = literalExample ''
+          {
+            example_dsn = "mysql://[user[:password]@][host][:port][/dbname]";
+          };
         '';
     };
   };
@@ -75,6 +80,7 @@ in {
   output.null = "#808080"
 
   [favorite_queries]
+  ${concatStringsSep "\n" (mapAttrsToList (name: value: "${name} = '''${value}'''") cfg.favoriteQueries)}
 
   [alias_dsn]
     '';
