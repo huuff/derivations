@@ -83,6 +83,7 @@ in {
   ${concatStringsSep "\n" (mapAttrsToList (name: value: "${name} = '''${value}'''") cfg.favoriteQueries)}
 
   [alias_dsn]
+  ${concatStringsSep "\n" (mapAttrsToList (name: value: "${name} = ${value}") cfg.aliasDSNs)}
     '';
   };
 }
