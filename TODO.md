@@ -14,5 +14,4 @@
 * Synchronize only clipboard to primary selection because the other way around feels like hell. Or will it be useless then?
 
 ## mycli
-* I'm not sure it even works. Test it.
 * Add some configuration options instead of setting them to the default directly in the file
