@@ -6,8 +6,8 @@ in {
   options.programs.thefuck = {
     enable = mkEnableOption "Magnificient app which corrects your previous console command";
 
-    fucks = {
-      type = types.list;
+    fucks = mkOption {
+      type = with types; listOf path;
       default = [];
       description = "List of files to put under .config/thefuck/rules";
       example = literalExample ''
