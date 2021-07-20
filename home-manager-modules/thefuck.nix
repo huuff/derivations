@@ -21,7 +21,7 @@ in {
   config = 
   let
     fuckFiles = map (fuck: {
-      name = "home.file.config/thefuck/rules/${baseNameOf fuck}.source";
+      name = "home.file..config/thefuck/rules/${baseNameOf fuck}.source";
       value = fuck;
     }) cfg.fucks;
   in
