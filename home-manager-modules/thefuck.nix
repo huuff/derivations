@@ -27,5 +27,7 @@ in {
   in
   mkIf cfg.enable (mkMerge [
     {home.packages = [ pkgs.thefuck ];}
-  ] ++ fuckFiles);
+
+    listToAttrs fuckFiles
+  ]);
 }
