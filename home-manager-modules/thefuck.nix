@@ -14,16 +14,17 @@ in {
          [
           ./nix_command_not_found.py
          ]
-        '';
+      '';
     };
   };
 
-    config = mkIf cfg.enable ({
-      home.packages = [ pkgs.thefuck ];
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.thefuck ];
 
+    home.file = listToAttrs (map (fuck: {
+      name = ".config/thefuck/rules/${baseNameOf fuck}.source";
+      value = fuck;
+    }) cfg.fucks );
 
-    } // listToAttrs (map (fuck: {
-        name = "home.file.config/thefuck/rules/${baseNameOf fuck}";
-        value = fuck;
-    }) cfg.fucks ));
-  }
+  };
+}
