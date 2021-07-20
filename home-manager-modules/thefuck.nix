@@ -7,7 +7,7 @@ in {
     enable = mkEnableOption "Magnificient app which corrects your previous console command";
 
     fucks = {
-      type = with types; listOf path;
+      type = types.list;
       default = [];
       description = "List of files to put under .config/thefuck/rules";
       example = literalExample ''
