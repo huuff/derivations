@@ -24,6 +24,6 @@ in {
     } // listToAttrs (map (fuck: {
         name = "home.file.config/thefuck/rules/${baseNameOf fuck}";
         value = fuck;
-    } cfg.fucks));
+    }) cfg.fucks );
   };
 }
