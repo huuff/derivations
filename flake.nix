@@ -36,6 +36,7 @@
       scripts = import ./home-manager-modules/scripts.nix;
       maven = import ./home-manager-modules/maven.nix;
       mycli = import ./home-manager-modules/mycli.nix;
+      thefuck = import ./home-manager-modules/thefuck.nix;
 
       # NixOS modules
       do-on-request = import ./nixos-modules/do-on-request.nix;
