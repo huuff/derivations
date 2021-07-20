@@ -18,14 +18,8 @@ in {
     };
   };
 
-  config = 
-  let
-    fuckFiles = map (fuck: {
+  config = mkIf cfg.enable (listToAttrs ((map (fuck: {
       name = "home.file.config/thefuck/rules/${baseNameOf fuck}.source";
       value = fuck;
-    }) cfg.fucks;
-  in
-  mkIf cfg.enable (mkMerge [
-    {home.packages = [ pkgs.thefuck ];}
-  ] ++ fuckFiles);
+    }) cfg.fucks)));
 }
