@@ -21,10 +21,12 @@ in {
   config = mkIf cfg.enable {
     home.packages = [ pkgs.thefuck ];
 
-    home.file = listToAttrs (map (fuck: {
+    home.file = let
+    fucks = listToAttrs (map (fuck: {
       name = ".config/thefuck/rules/${baseNameOf fuck}.source";
       value = fuck;
     }) cfg.fucks );
+    in trace fucks fucks;
 
   };
 }
