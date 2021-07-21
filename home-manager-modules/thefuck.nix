@@ -18,16 +18,11 @@ in {
     };
   };
 
-  config = 
-  let
-    fuckFiles = map (fuck: {
-      name = "home.file..config/thefuck/rules/${baseNameOf fuck}.source";
-      value = fuck;
-    }) cfg.fucks;
-  in
-  mkIf cfg.enable (mkMerge [
-    {home.packages = [ pkgs.thefuck ];}
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.thefuck ];
 
-    listToAttrs fuckFiles
-  ]);
+    home.file = mkMerge (map (fuck: {
+      ".config/thefuck/rules/${baseNameOf fuck}" = fuck;
+    } cfg.fucks);
+  };
 }
