@@ -22,7 +22,7 @@ in {
     home.packages = [ pkgs.thefuck ];
 
     home.file = mkMerge (map (fuck: {
-      ".config/thefuck/rules/${baseNameOf fuck}" = fuck;
+      ".config/thefuck/rules/${baseNameOf fuck}".source = fuck;
     }) cfg.fucks);
   };
 }
