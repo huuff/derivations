@@ -16,3 +16,7 @@
 
 ## mycli
 * Add some configuration options instead of setting them to the default directly in the file
+
+# thefuck
+* Create the default settings.py file and add default options
+* Add the `eval $(thefuck)` to bash automatically
