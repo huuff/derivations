@@ -23,6 +23,6 @@ in {
 
     home.file = mkMerge (map (fuck: {
       ".config/thefuck/rules/${baseNameOf fuck}" = fuck;
-    } cfg.fucks);
+    }) cfg.fucks);
   };
 }
