@@ -41,7 +41,6 @@
       # NixOS modules
       do-on-request = import ./nixos-modules/do-on-request.nix;
       auto-rsync = import ./nixos-modules/auto-rsync.nix;
-      neuron-module = import ./nixos-modules/neuron-module.nix;
     };
   };
 
