@@ -22,7 +22,7 @@
     };
 
     overlays = {
-      tmuxPplugins = import ./overlays/tmux-plugins.nix;
+      tmuxPlugins = import ./overlays/tmux-plugins.nix;
       st = import ./overlays/st-overlay.nix;
       surfPatches = import ./overlays/surf-patches.nix;
     };
