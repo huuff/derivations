@@ -49,7 +49,7 @@ in {
     home.file = mkMerge ((map (fuck: {
       ".config/thefuck/rules/${baseNameOf fuck}".source = fuck;
     }) cfg.fucks) ++ [ {
-      ".config/thefuck/settings.py".source = ''
+      ".config/thefuck/settings.py".source = pkgs.writeText "settings.py" ''
         # rules = [<const: All rules enabled>]
         # exclude_rules = []
         # wait_command = 3
