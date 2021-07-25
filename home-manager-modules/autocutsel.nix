@@ -21,8 +21,8 @@ in {
       Service = {
         Type = "forking";
         Restart = "on-failure";
-        ExecStart = "${pkg}/bin/autocutsel -fork";
-        #ExecStart = "${pkg}/bin/autocutsel -fork -selection PRIMARY";
+        ExecStartPre = "${pkg}/bin/autocutsel -fork";
+        ExecStart = "${pkg}/bin/autocutsel -fork -selection PRIMARY";
       };
 
       Install = {
