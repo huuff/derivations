@@ -22,16 +22,16 @@
     };
 
     overlays = {
-      tmux-plugins = import ./overlays/tmux-plugins.nix;
+      tmuxPplugins = import ./overlays/tmux-plugins.nix;
       st = import ./overlays/st-overlay.nix;
       surfPatches = import ./overlays/surf-patches.nix;
     };
 
     nixosModules = {
       # Home Manager modules
-      home-blesh = import ./home-manager-modules/home-blesh.nix; 
-      home-st = import ./home-manager-modules/home-st.nix;
-      home-surf = import ./surf/home-surf.nix;
+      blesh = import ./home-manager-modules/home-blesh.nix; 
+      st = import ./home-manager-modules/home-st.nix;
+      surf = import ./surf/home-surf.nix;
       autocutsel = import ./home-manager-modules/autocutsel.nix;
       scripts = import ./home-manager-modules/scripts.nix;
       maven = import ./home-manager-modules/maven.nix;
@@ -39,8 +39,8 @@
       thefuck = import ./home-manager-modules/thefuck.nix;
 
       # NixOS modules
-      do-on-request = import ./nixos-modules/do-on-request.nix;
-      auto-rsync = import ./nixos-modules/auto-rsync.nix;
+      doOnRequest = import ./nixos-modules/do-on-request.nix;
+      autoRsync = import ./nixos-modules/auto-rsync.nix;
     };
   };
 
