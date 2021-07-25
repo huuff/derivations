@@ -18,4 +18,3 @@
 
 # thefuck
 * Create the default settings.py file and add default options
-* Add the `eval $(thefuck)` to bash automatically
