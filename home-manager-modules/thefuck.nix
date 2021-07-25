@@ -15,6 +15,7 @@ in {
           ./nix_command_not_found.py
          ]
       '';
+    };
 
       enableBashIntegration = mkOption {
         type = bool;
@@ -34,7 +35,6 @@ in {
         default = true;
         description = "Enable zsh integration";
       };
-    };
   };
 
   config = mkIf cfg.enable {
