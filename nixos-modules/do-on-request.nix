@@ -66,8 +66,8 @@ in
           set -x
           while true;
           do {
-          ${cfg.script}
-          } | ${pkgs.busybox}/bin/nc -l -p ${toString cfg.port};
+            ${cfg.script}
+          } | ${pkgs.netcat}/bin/nc -l ${toString cfg.port};
           done
           '';
 
