@@ -10,5 +10,3 @@
   * [This offers some insight into why synchronizing clipboard and primary is a bad idea](https://specifications.freedesktop.org/clipboards-spec/clipboards-latest.txt)
   * [This is a long explanation into getting it to work in a nice way for my very specific use-case](https://www.seanh.cc/2020/12/27/copy-and-paste-in-tmux/)
 
-# thefuck
-* Create the default settings.py file and add default options
