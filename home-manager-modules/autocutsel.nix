@@ -21,7 +21,8 @@ in {
       Service = {
         Type = "forking";
         Restart = "on-failure";
-        ExecStart = "${pkg}/bin/autocutsel -fork";
+        ExecStartPre = "${pkg}/bin/autocutsel -fork";
+        ExecStart = "${pkg}/bin/autocutsel -fork -selection CLIPBOARD";
       };
 
       Install = {
