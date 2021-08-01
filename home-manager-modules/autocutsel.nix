@@ -22,7 +22,7 @@ in {
         Type = "forking";
         Restart = "on-failure";
         ExecStartPre = "${pkg}/bin/autocutsel -fork";
-        ExecStart = "${pkg}/bin/autocutsel -fork -selection PRIMARY";
+        ExecStart = "${pkg}/bin/autocutsel -fork -selection CLIPBOARD";
       };
 
       Install = {
