@@ -57,7 +57,7 @@ in
 
         serviceConfig = {
           User = cfg.user;
-          Restart = "on-failure";
+          Restart = "always";
           WorkingDirectory = "${cfg.workingDirectory}";
         };
 
