@@ -72,6 +72,10 @@ in
           '';
 
           wantedBy = [ "default.target" ];
+
+          unitConfig = {
+            After = [ "network.target" ];
+          };
       };
     };
 
