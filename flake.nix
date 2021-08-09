@@ -37,6 +37,7 @@
       maven = import ./home-manager-modules/maven.nix;
       mycli = import ./home-manager-modules/mycli.nix;
       thefuck = import ./home-manager-modules/thefuck.nix;
+    };
   };
 
 }
