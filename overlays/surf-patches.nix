@@ -1,4 +1,4 @@
-self: super: {
+final: prev: {
   surfPatches = {
     homepage = builtins.fetchurl {
       url = "https://surf.suckless.org/patches/homepage/surf-2.0-homepage.diff";

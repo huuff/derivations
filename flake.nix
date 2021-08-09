@@ -31,7 +31,7 @@
     nixosModules = {
       blesh = import ./home-manager-modules/home-blesh.nix; 
       st = import ./home-manager-modules/home-st.nix;
-      surf = import ./surf/home-surf.nix;
+      surf = import ./home-manager-modules/home-surf.nix;
       autocutsel = import ./home-manager-modules/autocutsel.nix;
       scripts = import ./home-manager-modules/scripts.nix;
       maven = import ./home-manager-modules/maven.nix;
