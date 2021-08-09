@@ -3,6 +3,3 @@
 
 ## st
 * config option for font
-
-## do-on-request
-* I'm sure there are some security issues I've not worked out

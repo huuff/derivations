@@ -27,8 +27,8 @@
       surfPatches = import ./overlays/surf-patches.nix;
     };
 
+    # Home Manager modules
     nixosModules = {
-      # Home Manager modules
       blesh = import ./home-manager-modules/home-blesh.nix; 
       st = import ./home-manager-modules/home-st.nix;
       surf = import ./surf/home-surf.nix;
@@ -37,11 +37,6 @@
       maven = import ./home-manager-modules/maven.nix;
       mycli = import ./home-manager-modules/mycli.nix;
       thefuck = import ./home-manager-modules/thefuck.nix;
-
-      # NixOS modules
-      doOnRequest = import ./nixos-modules/do-on-request.nix;
-      autoRsync = import ./nixos-modules/auto-rsync.nix;
-    };
   };
 
 }
