@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
-
+# TODO: Have maven config as attr set and convert to XML
 with lib;
 
 let
@@ -7,7 +7,7 @@ let
 in {
 
   options.programs.maven = {
-    enable = mkEnableOption "Maven package manager for Java";
+    enable = mkEnableOption "maven config management";
 
     options = mkOption {
       type = types.attrs;

@@ -7,7 +7,7 @@ let
 in {
 
   options.haf.autocutsel = {
-    enable = mkEnableOption "Automatic systemd unit to synchronize selections";
+    enable = mkEnableOption "synchronize selections";
   };
 
   config = mkIf cfg.enable {

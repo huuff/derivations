@@ -5,7 +5,7 @@ let
   boolToPython = bool: if bool then "True" else "False"; # Converts a Nix boolean to a python boolean
 in {
   options.programs.mycli = with types; {
-    enable = mkEnableOption "Command line MySQL interface";
+    enable = mkEnableOption "command line MySQL interface";
 
     multiline = mkOption {
       type = bool;

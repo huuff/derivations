@@ -5,7 +5,7 @@ let
   boolToPython = bool: if bool then "True" else "False";
 in {
   options.programs.thefuck = with types; {
-    enable = mkEnableOption "Magnificient app which corrects your previous console command";
+    enable = mkEnableOption "magnificient app which corrects your previous console command";
 
     fucks = mkOption {
       type = listOf path;
